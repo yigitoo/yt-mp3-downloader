@@ -10,6 +10,8 @@ ydl_opts = {
     }],
 }
 
+install_folder_name = 'musics'
+
 def get_url_list_from_file() -> list[str]:
     with open('urls.txt', 'r') as f:
         urls = f.read().splitlines()
@@ -45,7 +47,7 @@ def install_music_from_youtube() -> None:
     download_mp3()
 
 
-    os.makedirs('musics', exist_ok=True)
+    os.makedirs(install_folder_name, exist_ok=True)
     if os.name == 'nt':
         os.system('move *.mp3 musics')
     else:
@@ -63,3 +65,5 @@ if __name__ == "__main__":
         install_music_from_youtube()
     else:
         print('Mode cannot detected. Exiting...')
+
+    print(os.path.join(os.getcwd(), install_folder_name))
