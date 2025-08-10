@@ -1,4 +1,5 @@
 from yt_dlp import YoutubeDL
+import os
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -28,9 +29,7 @@ def reset_url_text_file() -> None:
     with open('urls.txt', 'w') as f:
         f.write("")
 
-if __name__ == "__main__":
-    import os
-
+def install_music_from_youtube():
     reset_url_text_file()
     print('Youtube MP3 Downloader\n')
     print('If you want to stop download list')
@@ -51,3 +50,7 @@ if __name__ == "__main__":
         os.system('move *.mp3 musics')
     else:
         os.system('mv *.mp3 musics')
+
+
+if __name__ == "__main__":
+    install_music_from_youtube()
