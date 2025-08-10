@@ -29,7 +29,7 @@ def reset_url_text_file() -> None:
     with open('urls.txt', 'w') as f:
         f.write("")
 
-def install_music_from_youtube():
+def install_music_from_youtube() -> None:
     reset_url_text_file()
     print('Youtube MP3 Downloader\n')
     print('If you want to stop download list')
@@ -53,4 +53,13 @@ def install_music_from_youtube():
 
 
 if __name__ == "__main__":
-    install_music_from_youtube()
+    is_single = input('Download mode single / whole playlist (s-single/p-playlist): ')
+
+    if is_single.lower() in ['s', 'single']:
+        ydl_opts['noplaylist'] = True
+        install_music_from_youtube()
+    elif is_single.lower() in ['p', 'playlist']:
+        ydl_opts['noplaylist'] = False
+        install_music_from_youtube()
+    else:
+        print('Mode cannot detected. Exiting...')
